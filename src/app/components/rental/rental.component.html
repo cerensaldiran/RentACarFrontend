@@ -1,0 +1,25 @@
+<div>
+    <h4 class="text-center text-white bg-dark">Arabalar</h4>
+    <table class="table">
+        <thead class="table-dark">
+            <tr>
+                <th>Marka</th>
+                <th>İsim Soyisim</th>
+                <th>Kiralama Tarihi</th>
+                <th>Teslim Tarihi</th>
+
+            </tr>
+        </thead>
+        <tbody class="table-light">
+            
+            <tr *ngFor="let rental of rentals">
+                <td>{{rental.brandName}}</td>
+                <td>{{rental.customerName}}</td>
+                <td>{{rental.rentDate}}</td>
+                <td>{{rental.returnDate}}</td>
+                
+                
+            </tr>
+        </tbody>
+    </table>
+</div>
