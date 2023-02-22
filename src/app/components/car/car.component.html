@@ -1,0 +1,25 @@
+<div>
+    <h4 class="text-center text-white bg-dark">Arabalar</h4>
+    <table class="table">
+        <thead class="table-dark">
+            <tr>
+                <th>Marka</th>
+                <th>Model</th>
+                <th>Renk</th>
+                <th>Fiyat (günlük)</th>
+
+            </tr>
+        </thead>
+        <tbody class="table-light">
+            
+            <tr *ngFor="let car of cars">
+                <td>{{car.brandName}}</td>
+                <td>{{car.carName}}</td>
+                <td>{{car.colorName}}</td>
+                <td>{{car.dailyPrice}}</td>
+                
+                
+            </tr>
+        </tbody>
+    </table>
+</div>
