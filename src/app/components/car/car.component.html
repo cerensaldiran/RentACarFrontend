@@ -1,25 +1,16 @@
-<div>
-    <h4 class="text-center text-white bg-dark">Arabalar</h4>
-    <table class="table">
-        <thead class="table-dark">
-            <tr>
-                <th>Marka</th>
-                <th>Model</th>
-                <th>Renk</th>
-                <th>Fiyat (günlük)</th>
 
-            </tr>
-        </thead>
-        <tbody class="table-light">
-            
-            <tr *ngFor="let car of cars">
-                <td>{{car.brandName}}</td>
-                <td>{{car.carName}}</td>
-                <td>{{car.colorName}}</td>
-                <td>{{car.dailyPrice}}</td>
-                
-                
-            </tr>
-        </tbody>
-    </table>
+<div class="row">
+<div class="col-md-4 "
+ *ngFor="let car of cars" >
+<div class="card" style="width: 18rem;">
+    <img [src]="getCarImage(car)" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">{{car.modelName}}</h5>
+      <p class="card-text">{{car.description}}</p>
+      <a (click)="setCurrentCar(car)"
+      routerLink="/cars/cardetail/{{car.carId}}"
+       class="btn btn-primary">Detaya Git</a>
+    </div>
+</div>
+</div>
 </div>

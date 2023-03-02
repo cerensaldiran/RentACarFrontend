@@ -10,7 +10,10 @@
         </thead>
         <tbody class="table-light">
             
-            <tr *ngFor="let color of colors">
+            <tr (click)="setCurrentColor(color)"
+            routerLink="/cars/color/{{color.id}}" 
+            *ngFor="let color of colors"
+            [class]="getCurrentColorClass(color)">
                 <td>{{color.id}}</td>
                 <td>{{color.name}}</td>
                 

@@ -10,7 +10,10 @@
         </thead>
         <tbody class="table-light">
             
-            <tr *ngFor="let brand of brands">
+            <tr (click)="setCurrentBrand(brand)"
+            routerLink="/cars/brand/{{brand.id}}"
+            *ngFor="let brand of brands"
+            [class]="getCurrentBrandClass(brand)">
                 <td>{{brand.id}}</td>
                 <td>{{brand.name}}</td>
                 
