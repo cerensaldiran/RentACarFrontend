@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Brand } from 'src/app/models/brand';
+import { Car } from 'src/app/models/car';
 import { BrandService } from 'src/app/services/brand.service';
+import { CarService } from 'src/app/services/car.service';
 
 @Component({
   selector: 'app-brand',
@@ -11,7 +13,9 @@ export class BrandComponent implements OnInit {
   brands:Brand[]=[];
   currentBrand: Brand;
 
-constructor(private brandService:BrandService){}
+
+
+constructor(private brandService:BrandService ){}
 ngOnInit(): void {
   this.getBrands();
 }  
@@ -31,5 +35,12 @@ getCurrentBrandClass(brand:Brand){
     return "table-light"
   }
 }
+// getCarsByBrand(brandId:number){
+//   this.carService.getCarsByBrand(brandId).subscribe(response=>{
+//     this.cars=response.data;
+    
+//   })
+
+// }
 
 }

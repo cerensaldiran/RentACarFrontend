@@ -1,12 +1,46 @@
 
+<!-- <div class="spinner-border text-primary" role="status">
+  <span class="visually-hidden">Loading...</span>
+</div> -->
+<div class="mb-3">
+  <label for="filterText" class="form-label" style="color:white">Ürün Ara</label>
+  <input type="text" [(ngModel)]="filterText" class="form-control" id="filterText" placeholder="arama ifadesi giriniz">
+</div>
+<div *ngIf="filterText.length>2" class="alert alert-success">
+  {{filterText}} aradınız.
+</div>
+
+<div class="row mb-3">
+  <div class="col-md-5">
+    <select [(ngModel)]="colorFilter" class="form-select" aria-label="Default select example">
+
+      <option  value="0" selected>Renk Seçiniz</option>
+      <option  *ngFor="let color of colors" [value]="color.id">{{color.name}}</option>
+    </select>
+  </div>
+  <div class="col-md-5">
+    <select [(ngModel)]="brandFilter" class="form-select" aria-label="Default select example">
+
+      <option  value="0" selected>Renk Seçiniz</option>
+      <option  *ngFor="let brand of brands" [value]="brand.id">{{brand.name}}</option>
+    </select>
+  </div>
+  <div class="col-md-2">
+    <button (click)="getCarsByColorandBrandId(colorFilter,brandFilter)" routerLink="/cars/getbycolorandbranid/{{colorFilter }}{{brandFilter}}">
+      Filtrele
+  </button>
+  </div>
+</div>
+
 <div class="row">
-<div class="col-md-4 "
- *ngFor="let car of cars" >
+<div class="col-md-4 col-sm-6  pb-3"
+ *ngFor="let car of cars | filterPipe:filterText "  >
 <div class="card" style="width: 18rem;">
-    <img [src]="getCarImage(car)" class="card-img-top" alt="...">
+    <img [src]="getCarImage(car)" class="card-img-top img" alt="...">
     <div class="card-body">
-      <h5 class="card-title">{{car.modelName}}</h5>
+      <h5 class="card-title">{{car.brandName+" " +car.modelName| uppercase}}</h5>
       <p class="card-text">{{car.description}}</p>
+      <p class="card-text">{{car.colorName}}</p>
       <a (click)="setCurrentCar(car)"
       routerLink="/cars/cardetail/{{car.carId}}"
        class="btn btn-primary">Detaya Git</a>

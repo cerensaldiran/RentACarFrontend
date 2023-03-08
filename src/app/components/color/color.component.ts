@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Car } from 'src/app/models/car';
 import { Color } from 'src/app/models/color';
+import { CarService } from 'src/app/services/car.service';
 import { ColorService } from 'src/app/services/color.service';
 
 @Component({
@@ -10,11 +13,15 @@ import { ColorService } from 'src/app/services/color.service';
 export class ColorComponent implements OnInit{
   colors:Color[]=[];
   currentColor:Color;
+ 
 
   constructor(private colorService:ColorService){}
 
   ngOnInit(): void {
+
       this.getColors();
+     
+    
   }
   getColors(){
     this.colorService.getColors().subscribe(response=>{
@@ -31,4 +38,12 @@ export class ColorComponent implements OnInit{
       return "table-light"
     }
   }
+  // getCarsByColor(colorId:number){
+  //   this.carService.getCarsByColor(colorId).subscribe(response=>{
+  //     this.cars=response.data;
+      
+  //   })
+
+  // }
+
 }
