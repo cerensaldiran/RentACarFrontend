@@ -1,9 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Car } from 'src/app/models/car';
 import { CarImage } from 'src/app/models/carImage';
+import { Rental } from 'src/app/models/rental';
 import { CarImageService } from 'src/app/services/car-image.service';
 import { CarService } from 'src/app/services/car.service';
+import { CartService } from 'src/app/services/cart.service';
+import { RentalService } from 'src/app/services/rental.service';
 
 @Component({
   selector: 'app-cardetail',
@@ -14,18 +18,23 @@ export class CardetailComponent implements OnInit {
   cars:Car[]=[]
   imageUrl="https://localhost:44351/uploads/images/"
   carImages:CarImage[]=[]
+  rentals:Rental[]=[]
+  currentRental:Rental;
   
 
   
   constructor(private carService:CarService,
     private activatedRoute:ActivatedRoute,
-    private carImageService:CarImageService){}
+    private carImageService:CarImageService,
+    private rentalService: RentalService,
+    private toastrService:ToastrService,
+    private cartService:CartService){}
   
   ngOnInit(): void {
       this.activatedRoute.params.subscribe(params=>{
         this.getCarById(params["carId"]),
         this.getCarImagesById(params["carId"])
-      
+       
         
       })
   }
@@ -54,7 +63,9 @@ export class CardetailComponent implements OnInit {
         return path;
       
     }
-    
-
+    addToCart(car:Car){
+      this.toastrService.success("Sepete Eklendi", car.modelName)
+      this.cartService.addToCart(car);
+    }
 
 }

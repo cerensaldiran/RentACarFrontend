@@ -24,39 +24,17 @@
 
 
 
-<!-- 
-<div class="row">
-  <div *ngIf="carImages.length > 0" id="carouselExampleIndicators" class="carousel slide " data-bs-ride="true">
-    <ol class="carousel-indicators">
-      <li data-bs-target="#carouselExampleIndicators" *ngFor="let carImage of carImages; let i = index" 
-      [attr.data-bs-slide-to]="i" [class.active]="i == 0"></li>
-    </ol>
-    <div class="carousel-inner">
-      <div class="carousel-item" *ngFor="let carImage of carImages; let i = index" [class.active]="i == 0">
-        <img [src]="getImages(carImage)" class="d-block fit" alt="car image">
-      </div>
-    </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next"  type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
-  </div> 
-
-</div> -->
-
 
 <div class="col-md-12"
      *ngFor="let car of cars" >
     <div class="card" >
         <!-- <img [src]="getCarImage(car)" class="card-img-top" alt="..."> -->
         <div class="card-body">
-          <h5 class="card-title">{{car.modelName}}</h5>
+          <h5 class="card-title">{{car.brandName+" "+car.modelName}}</h5>
+          <p class="card-text">{{car.colorName}}</p>
           <p class="card-text">{{car.description}}</p>
-          
+          <button (click)="addToCart(car)" type="button" class="btn btn-success"> Kirala</button>
+
         </div>
     </div>
 </div>
